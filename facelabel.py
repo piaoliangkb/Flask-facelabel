@@ -38,6 +38,9 @@ def hello_world():
 
     return render_template("index.html", nameToPicpath=nameToPicpath)
 
+@app.route('/test')
+def myTest():
+    return "hello,world"
 
 if __name__ == '__main__':
     app.run()
