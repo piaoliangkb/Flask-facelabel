@@ -31,7 +31,10 @@ def hello_world():
         pathOfPeople = pathOfFaceImg + list[i]
         filename = os.listdir(pathOfPeople)
         picpath = []
-        for indexOfPic in range(0, 6):
+        numOfpic = len(filename)
+        if numOfpic > 8:
+            numOfpic = 8
+        for indexOfPic in range(0, numOfpic):
             filepath = "faceImg/" + list[i] + "/" + filename[indexOfPic]
             picpath.append(filepath)
         nameToPicpath[list[i]] = picpath
