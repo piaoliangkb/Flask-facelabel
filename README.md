@@ -3,7 +3,9 @@
 ```
 sudo pip3 install virtualenv
 ```
-默认使用pip的话会安装python2的虚拟环境。
+
+> 默认使用pip的话会安装python2的虚拟环境。
+
 ----------------------------------------------------------------------------
 ### Windows下配置python web环境(ubuntu下同理)
 首先
