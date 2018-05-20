@@ -18,7 +18,8 @@ git clone https://github.com/piaoliangkb/Flask-facelabel.git
 > ubuntu下输入 source venv/bin/activate
 输入python --version检查python版本是否为python3
 
-![](https://upload-images.jianshu.io/upload_images/11146099-709184b9f510089f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://upload-images.jianshu.io/upload_images/11146099-709184b9f510089f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
+
 3. 之后输入pip install -r requirements.txt安装需要的包，安装成功后显示
 ![](https://upload-images.jianshu.io/upload_images/11146099-1bfa12040d7b9155.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 > sudo pip install -r requirements.txt
