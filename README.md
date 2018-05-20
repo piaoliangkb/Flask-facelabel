@@ -59,7 +59,6 @@ server {
 }
 
 ```
-![](https://upload-images.jianshu.io/upload_images/11146099-7a8de6ea76c22291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - listen后可以为任意数字，表示监听端口
 - location后照抄
