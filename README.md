@@ -4,7 +4,7 @@
 sudo pip3 install virtualenv
 ```
 默认使用pip的话会安装python2的虚拟环境。
-
+----------------------------------------------------------------------------
 ### Windows下配置python web环境(ubuntu下同理)
 首先
 ```
@@ -24,7 +24,7 @@ git clone https://github.com/piaoliangkb/Flask-facelabel.git
 4. 输入python facelabel.py，浏览器输入127.0.0.1:5000可以正常访问网页。
 ![](https://upload-images.jianshu.io/upload_images/11146099-aa3d8bdc7b9c8fd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 > sudo python facelabel.py
-
+--------------------------------------------------------------------
 ### 之后修改matlab和python中的文件路径
 
 5. matlab程序里边保存图片的位置改为当前工程目录下的static\faceImg
