@@ -28,7 +28,10 @@ def hello_world():
     nameToPicpath = {}
 
     for i in range(numOfPeople):
-        newName = request.args.get(list[i], None)
+        try:
+            newName = request.args.get(list[i], None)
+        except IndexError:
+            break
         mergeFlag = False
         if newName:
             oldPath = pathOfFaceImg + list[i]
@@ -44,8 +47,7 @@ def hello_world():
                     filenewpath = newPath + "/" + file
                     # if exists the file name
                     if os.path.exists(fileoldpath):
-                        filenewpath = newPath + "/" + str(random.random()) + '.jpg'
-                        print(filenewpath)
+                        filenewpath = newPath + "/" + str(i) + "-" + file
                     shutil.copyfile(fileoldpath, filenewpath)
                 shutil.rmtree(oldPath)
                 print("Merge two folders.")
