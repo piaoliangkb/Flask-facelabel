@@ -40,7 +40,7 @@ def hello_world():
             numOfpic = 8
         for indexOfPic in range(0, numOfpic):
             filepath = "faceImg/" + list[i] + "/" + filename[indexOfPic]
-            # 打印图片路径
+            # print the path of picture
             # print(filepath)
             picpath.append(filepath)
         nameToPicpath[list[i]] = picpath
