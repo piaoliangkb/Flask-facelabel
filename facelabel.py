@@ -6,7 +6,7 @@ import shutil
 import random
 from datetime import timedelta
 
-pathOfFaceImg = "D:/ffmpeg/facelabel/static/faceImg/"
+pathOfFaceImg = "./static/faceImg/"
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
