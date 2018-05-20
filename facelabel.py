@@ -2,11 +2,16 @@ from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 
 import os
+import shutil
+import random
+from datetime import timedelta
 
 pathOfFaceImg = "D:/ffmpeg/facelabel/static/faceImg/"
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
+
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
 
 @app.route('/', methods=['GET'])
@@ -25,7 +30,25 @@ def hello_world():
     for i in range(numOfPeople):
         newName = request.args.get(list[i], None)
         if newName:
-            os.rename(pathOfFaceImg + list[i], pathOfFaceImg + newName)
+            oldPath = pathOfFaceImg + list[i]
+            newPath = pathOfFaceImg + newName
+            try:
+                os.rename(oldPath, newPath)
+            except FileExistsError:
+                # list the files in old folders
+                files = os.listdir(oldPath)
+                for file in files:
+                    fileoldpath = oldPath + "/" + file
+                    filenewpath = newPath + "/" + file
+                    # if exists the file name
+                    if os.path.exists(fileoldpath):
+                        filenewpath = newPath + "/" + str(random.random()) + '.jpg'
+                        print(filenewpath)
+                    shutil.copyfile(fileoldpath, filenewpath)
+                shutil.rmtree(oldPath)
+                print("Merge two folders.")
+
+                
             list[i] = newName
 
     for i in range(numOfPeople):
