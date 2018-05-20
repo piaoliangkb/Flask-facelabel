@@ -50,7 +50,6 @@ sudo vi /etc/nginx/nginx.conf
 ```
 server {
         listen 80;
-        server_name ip;
 
         location / {
                 proxy_pass http://127.0.0.1:8000;
@@ -63,7 +62,6 @@ server {
 ![](https://upload-images.jianshu.io/upload_images/11146099-7a8de6ea76c22291.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 - listen后可以为任意数字，表示监听端口
-- server_name输入局域网内ip地址
 - location后照抄
 
 3. nginx启动
@@ -74,6 +72,9 @@ sudo nginx
 ```
 sudo service nginx start
 ```
+
+启动之后在浏览器中输入localhost可以访问页面。
+
 4. 修改配置之后nginx需要重启
 ```
 sudo nginx -s reload

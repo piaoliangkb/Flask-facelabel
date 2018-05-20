@@ -29,12 +29,14 @@ def hello_world():
 
     for i in range(numOfPeople):
         newName = request.args.get(list[i], None)
+        mergeFlag = False
         if newName:
             oldPath = pathOfFaceImg + list[i]
             newPath = pathOfFaceImg + newName
             try:
                 os.rename(oldPath, newPath)
             except FileExistsError:
+                mergeFlag = True
                 # list the files in old folders
                 files = os.listdir(oldPath)
                 for file in files:
@@ -47,11 +49,14 @@ def hello_world():
                     shutil.copyfile(fileoldpath, filenewpath)
                 shutil.rmtree(oldPath)
                 print("Merge two folders.")
+            if mergeFlag:
+                list.remove(list[i])
+            else:
+                list[i] = newName
+    print(list)
 
-                
-            list[i] = newName
 
-    for i in range(numOfPeople):
+    for i in range(len(list)):
         pathOfPeople = pathOfFaceImg + list[i]
         try:
             filename = os.listdir(pathOfPeople)
