@@ -13,7 +13,10 @@ bootstrap = Bootstrap(app)
 def hello_world():
 
     # list[i] :the name of the sequence
-    list = os.listdir(pathOfFaceImg)
+    try:
+        list = os.listdir(pathOfFaceImg)
+    except OSError:
+        list = []
     # numOfPeople :number of sequence
     numOfPeople = len(list)
     # nameToPicpath :name to filename of this people's picture
@@ -21,21 +24,24 @@ def hello_world():
 
     for i in range(numOfPeople):
         newName = request.args.get(list[i], None)
-        print(newName)
         if newName:
-            print("newName is not None")
             os.rename(pathOfFaceImg + list[i], pathOfFaceImg + newName)
             list[i] = newName
 
     for i in range(numOfPeople):
         pathOfPeople = pathOfFaceImg + list[i]
-        filename = os.listdir(pathOfPeople)
+        try:
+            filename = os.listdir(pathOfPeople)
+        except OSError:
+            filename = []
         picpath = []
         numOfpic = len(filename)
         if numOfpic > 8:
             numOfpic = 8
         for indexOfPic in range(0, numOfpic):
             filepath = "faceImg/" + list[i] + "/" + filename[indexOfPic]
+            # 打印图片路径
+            # print(filepath)
             picpath.append(filepath)
         nameToPicpath[list[i]] = picpath
 
