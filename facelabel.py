@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 import os
@@ -55,6 +55,7 @@ def hello_world():
                 list.remove(list[i])
             else:
                 list[i] = newName
+            return redirect(url_for('.hello_world'))
     print(list)
 
 
@@ -119,6 +120,7 @@ def enter_admin_page():
                 list.remove(list[i])
             else:
                 list[i] = newName
+            return redirect(url_for('.enter_admin_page'))
     print(list)
 
     for i in range(numOfPeople):
