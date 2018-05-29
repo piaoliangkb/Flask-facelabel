@@ -31,16 +31,14 @@ def hello_world():
         try:
             newName = request.args.get(list[i], None)
         except IndexError:
-            pass
+            break
         mergeFlag = False
         if newName:
             oldPath = pathOfFaceImg + list[i]
             newPath = pathOfFaceImg + newName
             try:
                 os.rename(oldPath, newPath)
-                modifiedFlag = True
             except FileExistsError:
-                print(oldPath + "not exist")
                 mergeFlag = True
                 # list the files in old folders
                 files = os.listdir(oldPath)
