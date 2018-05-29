@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 
 import os
@@ -11,7 +11,7 @@ pathOfFaceImg = "./static/faceImg/"
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
+# app.config['SEND_FILE_MAX_AGE_DEFAULT'] = timedelta(seconds=1)
 
 
 @app.route('/', methods=['GET'])
@@ -31,14 +31,16 @@ def hello_world():
         try:
             newName = request.args.get(list[i], None)
         except IndexError:
-            break
+            pass
         mergeFlag = False
         if newName:
             oldPath = pathOfFaceImg + list[i]
             newPath = pathOfFaceImg + newName
             try:
                 os.rename(oldPath, newPath)
+                modifiedFlag = True
             except FileExistsError:
+                print(oldPath + "not exist")
                 mergeFlag = True
                 # list the files in old folders
                 files = os.listdir(oldPath)
